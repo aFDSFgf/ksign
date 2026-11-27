@@ -15,7 +15,7 @@ struct SettingsView: View {
 entity: CertificatePair.entity(),
 sortDescriptors: [NSSortDescriptor(keyPath: \CertificatePair.date, ascending: false)],
 animation: .snappy
-) private var _certificates: FetchedResults
+) private var _certificates: FetchedResults<CertificatePair>
 
 private var selectedCertificate: CertificatePair? {
     guard
