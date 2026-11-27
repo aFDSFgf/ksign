@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import NimbleViews
 
 struct TabbarView: View {
 @State private var selectedTab: TabEnum = .sources
@@ -20,8 +21,9 @@ Label(tab.title, systemImage: tab.icon)
 .tag(tab)
 }
 }
-.toolbarBackground(Color.red, for: .tabBar)
+.toolbarBackground(.ultraThinMaterial, for: .tabBar)
 .toolbarBackground(.visible, for: .tabBar)
-.background(Color.red)
+.toolbarColorScheme(.dark, for: .tabBar)
+.background(KsignBackground())
 }
 }
