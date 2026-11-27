@@ -25,10 +25,12 @@ public struct NBNavigationView<Content>: View where Content: View {
 	public var body: some View {
 		NavigationStack {
 			_content
+				.background(KsignBackground())
 				.navigationTitle(_title)
 				.navigationBarTitleDisplayMode(_mode)
-				.toolbarBackground(Color.red, for: .navigationBar)
+				.toolbarBackground(Color.black.opacity(0.9), for: .navigationBar)
 				.toolbarBackground(.visible, for: .navigationBar)
+				.toolbarColorScheme(.dark, for: .navigationBar)
 		}
 	}
 }
