@@ -20,7 +20,7 @@ struct FeatherApp: App {
 	@StateObject var logsManager = LogsManager.shared
 	let storage = Storage.shared
 
-	var body: some Scene {
+	init() { let appearance = UITabBarAppearance(); appearance.configureWithTransparentBackground(); appearance.backgroundEffect = UIBlurEffect(style: .systemUltraThinMaterialDark); appearance.backgroundColor = UIColor.black.withAlphaComponent(0.7); UITabBar.appearance().standardAppearance = appearance; UITabBar.appearance().scrollEdgeAppearance = appearance }; var body: some Scene {
 		WindowGroup {
 			VStack {
                 ExtractHeaderView(extractManager: extractManager)
