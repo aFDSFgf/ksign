@@ -7,7 +7,7 @@
 //
 
 import SwiftUI
-import NukeUI
+import NukeUI; import NimbleViews
 
 @available(iOS 18, *)
 struct ExtendedTabbarView: View {
@@ -73,11 +73,11 @@ struct ExtendedTabbarView: View {
 		}
 		.tabViewStyle(.sidebarAdaptable)
 		.tabViewCustomization($customization)
-		.toolbarBackground(Color.red, for: .tabBar)
-		.toolbarBackground(.visible, for: .tabBar)
-		.background(Color.red)
+		.toolbarBackground(.ultraThinMaterial, for: .tabBar)
+		.toolbarBackground(.visible, for: .tabBar).toolbarColorScheme(.dark, for: .tabBar)
+		.background(KsignBackground())
 		.sheet(isPresented: $_isAddingPresenting) {
-			SourcesAddView()
+			SourcesAddView().background(KsignBackground())
 				.presentationDetents([.medium])
 		}
 	}
