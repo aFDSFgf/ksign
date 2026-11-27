@@ -107,3 +107,4 @@ struct ExtendedTabbarView: View {
 		Image(systemName: "app.dashed")
 	}
 }
+
