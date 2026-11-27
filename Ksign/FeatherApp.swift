@@ -27,7 +27,7 @@ struct FeatherApp: App {
                     .transition(.move(edge: .top).combined(with: .opacity))
 				DownloadHeaderView(downloadManager: downloadManager)
 					.transition(.move(edge: .top).combined(with: .opacity))
-				VariedTabbarView()
+				SignerRootView()
 					.environment(\.managedObjectContext, storage.context)
 					.onOpenURL(perform: _handleURL)
 					.transition(.move(edge: .top).combined(with: .opacity))
@@ -76,7 +76,7 @@ struct FeatherApp: App {
 	
 }
 
-class AppDelegate: NSObject, UIApplicationDelegate {
+import NimbleViews; struct SignerRootView: View { @State private var showingCertificateImport = false; @ObservedObject private var logs = LogsManager.shared; var body: some View { ZStack { KsignBackground().ignoresSafeArea(); VStack(spacing: 0) { HStack { Image(systemName: "chevron.left").foregroundStyle(.secondary); Spacer(); Image(systemName: "lock.fill").foregroundStyle(.yellow); Text("iOS Signer").font(.headline); Spacer(); Image(systemName: "chevron.left").hidden() }.padding(); HStack { Spacer(); Button("Import Certificate & Profile") { showingCertificateImport = true }.font(.caption).padding(.horizontal) }; LibraryView(); VStack(alignment: .leading, spacing: 6) { Text("Status Log").font(.caption).foregroundStyle(.secondary); ScrollView { LazyVStack(alignment: .leading, spacing: 3) { ForEach(logs.entries) { entry in Text(entry.message).font(.system(.caption2, design: .monospaced)).frame(maxWidth: .infinity, alignment: .leading) } } }.frame(height: 100) }.padding().background(Color.black.opacity(0.65)) } }.preferredColorScheme(.dark).sheet(isPresented: $showingCertificateImport) { CertificatesAddView() }.onAppear { logs.startCapture() } } }; class AppDelegate: NSObject, UIApplicationDelegate {
     func application(
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil
