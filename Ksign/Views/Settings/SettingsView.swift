@@ -97,7 +97,7 @@ SettingsDonationCellView(site: _donationsUrl)
 
         }
         .scrollContentBackground(.hidden)
-        .background(Color.red)
+        .background(KsignBackground())
     }
 }
 }
